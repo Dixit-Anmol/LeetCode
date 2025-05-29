@@ -1,0 +1,8 @@
+# Write your MySQL query statement below
+    select d.name as Department,e.name as Employee,e.salary 
+from Department as d 
+join (select name,departmentid,salary,
+                dense_rank() over(partition by departmentid order by salary desc )as r  
+                from employee ) e
+                 on e.departmentid=d.id
+where r=1;
