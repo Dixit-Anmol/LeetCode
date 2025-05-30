@@ -1,0 +1,5 @@
+/* Write your T-SQL query statement below */
+select d.name as department,sq.name as employee,sq.salary from department d
+join (select * from (select *,dense_rank() over(partition by e.departmentid order by salary desc)as r from employee e) sub
+)sq on sq.departmentid=d.id
+where r in (1,2,3);
