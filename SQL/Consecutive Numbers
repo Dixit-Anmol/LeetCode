@@ -1,0 +1,3 @@
+/* Write your T-SQL query statement below */
+select distinct num as ConsecutiveNums  from (select num,lead(num,1) over (order by id)as lead1,lead(num,2)over (order by id) as lead2 from logs ) l
+where num=lead1 and num=lead2
