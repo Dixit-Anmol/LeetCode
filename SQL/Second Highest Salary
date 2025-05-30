@@ -1,0 +1,4 @@
+# Write your MySQL query statement below
+select max(case when r= 2 then salary end) as secondhighestsalary 
+        from (select salary ,dense_rank() over(order  by salary desc) as r 
+                from employee) e;
