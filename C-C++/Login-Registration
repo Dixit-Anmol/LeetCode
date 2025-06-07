@@ -1,0 +1,49 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    printf("Welcome USER\nRegistration::Press 1\nLogin:: Press 2\nTo Exit:: Press 3\n");
+    int c,i=0;
+    scanf(" %d",&c);
+    char *email[5];
+    char *pass[5];
+    char *em,*pas;
+    l1:
+    while(c!=3){
+        if(c==1){
+            printf("Enter Your Email Address:\n");
+            scanf("%s",&em);
+            email[i]=em;
+            printf("Enter Password:\n");
+            scanf("%s",&pas);
+            pass[i]=pas;
+            i++;
+            printf("\nRegistration::Press 1\nLogin:: Press 2\nTo Exit:: Press 3\n");
+        }else if(c==2){
+            printf("Enter Your Email:\n");
+            scanf("%s",&em);
+            for(int i=0;i<sizeof(email);i++){
+                if(em==email[i]){
+                    printf("Enter Your PAssword:\n");
+                    scanf("%s",&pas);
+                    if(pas==pass[i]){
+                        printf("Login Successfully::\n");
+                        return 0;
+                    }else{
+                        printf("Incorrect Password:\n");
+                    }
+                }else{
+                    printf("You are not registerd:\n");
+                    break;
+                }
+            } break;
+        }else{
+            printf("please enter again the operation:");
+            scanf(" %d",&c);
+            goto l1;
+        }
+            scanf("%d",&c);
+    }
+
+    return 0;
+}
