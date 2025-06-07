@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<math.h>
+#include<time.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main() {
+    int num;
+    int chance=7;
+    char *arr[]={"apple","banana","melon","grapes","guava","kiwi","orange"};
+    srand(time(NULL));
+ 
+    num = rand()%7;
+    printf("%d\n",num);
+
+    char *s = arr[num];
+    printf("%s\n",s);
+    int len = strlen(s);
+    printf("%d\n",len);
+    char uscr[len];
+    for(int i=0;i<len;i++){
+        uscr[i]='_';
+        printf("%c ",uscr[i]);
+    }
+    printf("\nYou have only 7 wrong choices to make::\n");
+    char choice;
+
+    while(chance!=0){
+    printf("\nGuess the Character::");
+    scanf(" %c",&choice);
+    printf("Your Choice is %c ",choice);
+        if(strchr(s,choice)){
+            //printf("Inside the loop");
+            for(int i=0;i<sizeof(uscr);i++){
+                if(s[i]==choice){
+                    printf("\nGreat choice\n");
+                    printf("\nindex of %c is %d\n",choice,i);
+                    char temp=uscr[i];
+                    uscr[i]=choice;
+                    choice=temp;
+                }
+                
+            }
+            for(int i=0;i<len;i++){
+                printf("%c ",uscr[i]);
+            }
+            
+        }else{
+            printf("Wrong Guess");
+            chance--;
+        }
+        char *comp = uscr;
+                if (strcmp(comp,s)==0){
+                    printf("Congrats you won the game");
+                    chance=0;
+                }else{
+                    continue;
+                }
+    }
+  
+    return 0;
+}
